@@ -1,8 +1,8 @@
 # 🧮 Calculator App
 
-A beautiful, modern calculator that's way more fun than the default one. It's got smooth animations, satisfying interactions, and even a little secret hidden inside.
+A modern default calculator. It's got smooth animations, satisfying interactions, and even a little "secret" hidden inside.
 
-## ✨ What It Can Do
+## What It Can Do
 
 **Calculator Features**
 - ➕ Basic math (add, subtract, multiply, divide)
@@ -19,7 +19,7 @@ A beautiful, modern calculator that's way more fun than the default one. It's go
 **Easter Egg** 🔐
 - Try typing `556677567` to unlock a surprise!
 
-## 🚀 How to Use
+## How to Use
 
 1. Open `index.html` in your browser
 2. Click buttons to calculate (or use your keyboard!)
@@ -27,7 +27,7 @@ A beautiful, modern calculator that's way more fun than the default one. It's go
 4. Use `←` to undo a digit, `C` to start over
 5. *Optional:* Find the secret code 😉
 
-## 📁 What's Inside
+## What's Inside
 
 ```
 ├── index.html    → The structure
@@ -35,14 +35,14 @@ A beautiful, modern calculator that's way more fun than the default one. It's go
 └── app.js        → The brains (calculator logic, secret code)
 ```
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Pure JavaScript** - No frameworks, just clean code
 - **CSS Grid** - Responsive button layout
 - **Event Delegation** - Efficient button handling
 - **Mobile-First** - Works everywhere
 
-## 🌐 Browser Support
+## Browser Support
 
 Works on everything modern:
 - ✅ Chrome/Edge 90+
