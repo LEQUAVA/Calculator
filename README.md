@@ -8,11 +8,11 @@ A modern default calculator. It's got smooth animations, satisfying interactions
 - ➕ Basic math (add, subtract, multiply, divide)
 - 🎯 Decimal support for precise calculations
 - ⌫ Delete the last digit or clear everything
-- 🛡️ Smart error handling (no division by zero crashes)
+- 🛡️ Handles invalid calculations safely
 
 **Design Highlights**
 - 🎨 Beautiful gradient UI with smooth animations
-- 📱 Works across on phones, tablets, and desktops
+- 📱 Works across phones, tablets, and desktops
 - ✨ Glowing effects and hover animations
 - ⌨️ Keyboard support for power users
 
@@ -37,8 +37,7 @@ A modern default calculator. It's got smooth animations, satisfying interactions
 
 ## Tech Stack
 
-- **Pure JavaScript** - No frameworks, just clean code
-- **CSS Grid** - Responsive button layout
+- **Built with** -  vanilla JavaScript, HTML, and CSS
 - **Event Delegation** - Efficient button handling
 - **Mobile-First** - Works everywhere
 
