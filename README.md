@@ -12,7 +12,7 @@ A modern default calculator. It's got smooth animations, satisfying interactions
 
 **Design Highlights**
 - 🎨 Beautiful gradient UI with smooth animations
-- 📱 Works perfectly on phones, tablets, and desktops
+- 📱 Works across on phones, tablets, and desktops
 - ✨ Glowing effects and hover animations
 - ⌨️ Keyboard support for power users
 
