@@ -17,7 +17,7 @@ A modern default calculator. It's got smooth animations, satisfying interactions
 - ⌨️ Keyboard support for power users
 
 **Easter Egg** 🔐
-- Try typing `556677567` to unlock a surprise!
+- Try typing `556677567` to unlock a (meh) surprise!
 
 ## How to Use
 
