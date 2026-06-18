@@ -1,6 +1,7 @@
 /**
- * Calculator App with Secret Code Feature
+ * Advanced Calculator App with Secret Code Feature
  * Secret Code: 556677567
+ * Features: History tracking, advanced functions, keyboard support, local storage
  */
 
 class Calculator {
@@ -13,8 +14,13 @@ class Calculator {
         this.secretCode = '556677567';
         this.secretInputBuffer = '';
         this.secretUnlocked = false;
+        this.history = [];
+        this.maxHistoryItems = 50;
         
         this.init();
+        this.loadHistory();
+        this.setupKeyboardSupport();
+        this.setupHistoryModal();
     }
 
     init() {
@@ -22,6 +28,76 @@ class Calculator {
             btn.addEventListener('click', (e) => this.handleButtonClick(e));
         });
         this.updateDisplay();
+    }
+
+    setupKeyboardSupport() {
+        document.addEventListener('keydown', (e) => {
+            const key = e.key;
+            
+            // Number keys
+            if (key >= '0' && key <= '9') {
+                this.handleNumber(key);
+            }
+            // Decimal point
+            else if (key === '.') {
+                this.handleNumber('.');
+            }
+            // Operators
+            else if (key === '+' || key === '-') {
+                this.handleOperator(key);
+            }
+            else if (key === '*') {
+                e.preventDefault();
+                this.handleOperator('*');
+            }
+            else if (key === '/') {
+                e.preventDefault();
+                this.handleOperator('/');
+            }
+            // Enter or equals
+            else if (key === 'Enter' || key === '=') {
+                e.preventDefault();
+                this.handleOperator('=');
+            }
+            // Backspace
+            else if (key === 'Backspace') {
+                e.preventDefault();
+                this.delete();
+            }
+            // Escape - clear
+            else if (key === 'Escape') {
+                this.clear();
+            }
+        });
+    }
+
+    setupHistoryModal() {
+        const historyBtn = document.getElementById('historyBtn');
+        const historyModal = document.getElementById('historyModal');
+        const closeBtn = document.getElementById('closeBtn');
+        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+        historyBtn.addEventListener('click', () => {
+            this.displayHistory();
+            historyModal.classList.add('show');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            historyModal.classList.remove('show');
+        });
+
+        historyModal.addEventListener('click', (e) => {
+            if (e.target === historyModal) {
+                historyModal.classList.remove('show');
+            }
+        });
+
+        clearHistoryBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all history?')) {
+                this.clearHistory();
+                this.displayHistory();
+            }
+        });
     }
 
     handleButtonClick(e) {
@@ -33,6 +109,8 @@ class Calculator {
             this.handleNumber(value);
         } else if (action === 'operator') {
             this.handleOperator(value);
+        } else if (action === 'function') {
+            this.handleFunction(value);
         } else if (action === 'clear') {
             this.clear();
         } else if (action === 'delete') {
@@ -81,6 +159,49 @@ class Calculator {
         }
     }
 
+    handleFunction(func) {
+        if (this.currentValue === '') return;
+
+        const current = parseFloat(this.currentValue);
+        let result = 0;
+
+        switch (func) {
+            case 'sqrt':
+                if (current < 0) {
+                    this.display.value = 'Error: Negative sqrt';
+                    this.shouldResetDisplay = true;
+                    this.currentValue = '';
+                    return;
+                }
+                result = Math.sqrt(current);
+                break;
+            case 'square':
+                result = current * current;
+                break;
+            case 'reciprocal':
+                if (current === 0) {
+                    this.display.value = 'Error: Division by zero';
+                    this.shouldResetDisplay = true;
+                    this.currentValue = '';
+                    return;
+                }
+                result = 1 / current;
+                break;
+            case 'percent':
+                result = current / 100;
+                break;
+            case 'toggle':
+                result = current * -1;
+                break;
+            default:
+                return;
+        }
+
+        this.currentValue = this.formatResult(result);
+        this.shouldResetDisplay = true;
+        this.updateDisplay();
+    }
+
     calculate() {
         if (!this.operation || this.currentValue === '' || this.previousValue === '') {
             return;
@@ -101,7 +222,6 @@ class Calculator {
                 result = prev * current;
                 break;
             case '/':
-                result = current !== 0 ? prev / current : 0;
                 if (current === 0) {
                     this.display.value = 'Error: Division by zero';
                     this.shouldResetDisplay = true;
@@ -110,8 +230,13 @@ class Calculator {
                     this.operation = null;
                     return;
                 }
+                result = prev / current;
                 break;
         }
+
+        // Add to history
+        const expression = `${prev} ${this.operation} ${current}`;
+        this.addToHistory(expression, result);
 
         this.currentValue = this.formatResult(result);
         this.previousValue = '';
@@ -150,7 +275,7 @@ class Calculator {
     unlockSecret() {
         if (!this.secretUnlocked) {
             this.secretUnlocked = true;
-            this.display.value = '🎉 SECRET UNLOCKED! 🎉';
+            this.display.value = 'SECRET UNLOCKED!';
             this.display.style.color = '#00ff00';
             
             setTimeout(() => {
@@ -159,6 +284,82 @@ class Calculator {
                 this.clear();
             }, 2000);
         }
+    }
+
+    addToHistory(expression, result) {
+        this.history.unshift({
+            expression: expression,
+            result: this.formatResult(result),
+            timestamp: new Date().toLocaleTimeString()
+        });
+
+        // Limit history size
+        if (this.history.length > this.maxHistoryItems) {
+            this.history.pop();
+        }
+
+        this.saveHistory();
+    }
+
+    displayHistory() {
+        const historyList = document.getElementById('historyList');
+        
+        if (this.history.length === 0) {
+            historyList.innerHTML = '<p class="empty-state">No history yet</p>';
+            return;
+        }
+
+        historyList.innerHTML = this.history.map((item, index) => `
+            <div class="history-item" data-index="${index}">
+                <div>
+                    <div class="history-expression">${this.escapeHtml(item.expression)}</div>
+                    <small>${item.timestamp}</small>
+                </div>
+                <div class="history-result">${this.escapeHtml(item.result)}</div>
+            </div>
+        `).join('');
+
+        // Add click listeners to history items
+        document.querySelectorAll('.history-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const index = item.dataset.index;
+                this.currentValue = this.history[index].result;
+                this.shouldResetDisplay = true;
+                this.updateDisplay();
+                document.getElementById('historyModal').classList.remove('show');
+            });
+        });
+    }
+
+    saveHistory() {
+        try {
+            localStorage.setItem('calculatorHistory', JSON.stringify(this.history));
+        } catch (e) {
+            console.warn('Failed to save history:', e);
+        }
+    }
+
+    loadHistory() {
+        try {
+            const saved = localStorage.getItem('calculatorHistory');
+            if (saved) {
+                this.history = JSON.parse(saved);
+            }
+        } catch (e) {
+            console.warn('Failed to load history:', e);
+            this.history = [];
+        }
+    }
+
+    clearHistory() {
+        this.history = [];
+        this.saveHistory();
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
     updateDisplay() {

@@ -9,33 +9,64 @@
 <body>
     <div class="container">
         <div class="calculator">
+            <div class="header">
+                <h1>Calculator</h1>
+                <button class="history-btn" id="historyBtn" title="View calculation history">History</button>
+            </div>
             <div class="display">
                 <input type="text" id="result" readonly placeholder="0">
             </div>
             <div class="buttons">
+                <!-- Row 1: Advanced functions -->
+                <button class="btn function" data-action="function" data-value="sqrt">√x</button>
+                <button class="btn function" data-action="function" data-value="square">x²</button>
+                <button class="btn function" data-action="function" data-value="reciprocal">1/x</button>
                 <button class="btn clear" data-action="clear">C</button>
-                <button class="btn operator" data-action="operator" data-value="/">÷</button>
-                <button class="btn operator" data-action="operator" data-value="*">×</button>
-                <button class="btn operator" data-action="delete">←</button>
 
+                <!-- Row 2: Standard operators -->
                 <button class="btn" data-action="number" data-value="7">7</button>
                 <button class="btn" data-action="number" data-value="8">8</button>
                 <button class="btn" data-action="number" data-value="9">9</button>
-                <button class="btn operator" data-action="operator" data-value="-">−</button>
+                <button class="btn operator" data-action="operator" data-value="/">÷</button>
 
+                <!-- Row 3 -->
                 <button class="btn" data-action="number" data-value="4">4</button>
                 <button class="btn" data-action="number" data-value="5">5</button>
                 <button class="btn" data-action="number" data-value="6">6</button>
-                <button class="btn operator" data-action="operator" data-value="+">+</button>
+                <button class="btn operator" data-action="operator" data-value="*">×</button>
 
+                <!-- Row 4 -->
                 <button class="btn" data-action="number" data-value="1">1</button>
                 <button class="btn" data-action="number" data-value="2">2</button>
                 <button class="btn" data-action="number" data-value="3">3</button>
-                <button class="btn operator" data-action="operator" data-value="=">=</button>
+                <button class="btn operator" data-action="operator" data-value="-">−</button>
 
+                <!-- Row 5 -->
                 <button class="btn zero" data-action="number" data-value="0">0</button>
                 <button class="btn" data-action="number" data-value=".">.</button>
+                <button class="btn operator" data-action="operator" data-value="+">+</button>
+                <button class="btn equals" data-action="operator" data-value="=">=</button>
+
+                <!-- Row 6: Extra controls -->
+                <button class="btn delete" data-action="delete">← Delete</button>
+                <button class="btn function" data-action="function" data-value="percent">%</button>
+                <button class="btn function" data-action="function" data-value="toggle">+/-</button>
+                <button class="btn function" data-action="function" data-value="backspace">⌫</button>
             </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Calculation History</h2>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <p class="empty-state">No history yet</p>
+            </div>
+            <button class="clear-history-btn" id="clearHistoryBtn">Clear History</button>
         </div>
     </div>
 
