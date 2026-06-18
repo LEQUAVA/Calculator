@@ -2,37 +2,37 @@
 
 **Release Date:** June 18, 2026
 
-## 🎉 Initial Public Release
+##  Initial Public Release
 
-We're excited to launch the first official release of Calculator App!
+Excited to launch the first official release of Calculator App!
 
-## ✨ Features
+##  Features
 
 ### Core Calculator Functions
-- ➕ Basic arithmetic operations (add, subtract, multiply, divide)
-- 🔢 Advanced mathematical functions (square, square root, percentage, reciprocal)
-- 📊 Full decimal support for precise calculations
-- 🗑️ Digit deletion (backspace) and full clear functionality
-- 🛡️ Safe handling of invalid calculations
+-  Basic arithmetic operations (add, subtract, multiply, divide)
+-  Advanced mathematical functions (square, square root, percentage, reciprocal)
+-  Full decimal support for precise calculations
+-  Digit deletion (backspace) and full clear functionality
+-  Safe handling of invalid calculations
 
 ### User Experience
-- 📱 Fully responsive design (mobile, tablet, desktop)
-- 🌙 Dark mode with beautiful gradient UI
-- ✨ Smooth animations and glowing effects
-- ⌨️ Keyboard support for power users
-- 🕐 Calculation history with persistent storage (via Local Storage)
-- 🎮 Interactive hover animations and visual feedback
+-  Fully responsive design (mobile, tablet, desktop)
+-  Dark mode with beautiful gradient UI
+-  Smooth animations and glowing effects
+-  Keyboard support for power users
+-  Calculation history with persistent storage (via Local Storage)
+-  Interactive hover animations and visual feedback
 
 ### Code Quality
-- 💻 Built with vanilla JavaScript, HTML, and CSS (no dependencies!)
-- ⚡ Event delegation for efficient DOM handling
-- 📦 Clean, modular code structure
-- 🌍 Cross-browser compatible (Chrome/Edge 90+, Firefox 88+, Safari 14+, mobile browsers)
+-  Built with vanilla JavaScript, HTML, and CSS (no dependencies!)
+-  Event delegation for efficient DOM handling
+-  Clean, modular code structure
+-  Cross-browser compatible (Chrome/Edge 90+, Firefox 88+, Safari 14+, mobile browsers)
 
 ### 🎁 Easter Egg
 Try entering `556677567` to discover a hidden secret!
 
-## 📋 What's Included
+##  What's Included
 
 ```
 ├── index.html     → Application structure
@@ -42,7 +42,7 @@ Try entering `556677567` to discover a hidden secret!
 └── LICENSE        → (if applicable)
 ```
 
-## 🚀 Getting Started
+##  Getting Started
 
 1. Clone or download the repository
 2. Open `index.html` in your web browser
@@ -55,17 +55,17 @@ Try entering `556677567` to discover a hidden secret!
 - `Backspace` - Delete last digit
 - `C` or `Escape` - Clear all
 
-## 🌐 Browser Compatibility
+##  Browser Compatibility
 
-✅ Chrome/Chromium 90+  
-✅ Firefox 88+  
-✅ Safari 14+  
-✅ Mobile browsers (iOS Safari, Chrome Mobile)
+ Chrome/Chromium 90+  
+ Firefox 88+  
+ Safari 14+  
+ Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 📝 License
+##  License
 
 See LICENSE file for details.
 
 ---
 
-**Ready to calculate? Download and enjoy!** 🎯
+**Download and enjoy!** 
