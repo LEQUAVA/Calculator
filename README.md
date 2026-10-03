@@ -1,61 +1,50 @@
-# Calculator App
+# Calculator
 
-A modern default calculator. It's got smooth animations, satisfying interactions, and even a little "secret" hidden inside.
+A small browser calculator I keep tinkering with. It started as a basic four-function calculator and slowly picked up history, keyboard controls, extra operations, and one unnecessary easter egg.
 
-## What It Can Do
+## Features
 
-**Calculator Features**
-- Basic math (add, subtract, multiply, divide)
-- Advanced functions (square, square root, percentage, reciprocal)
-- Decimal support for precise calculations
-- Delete the last digit or clear everything
-- Handles invalid calculations safely
-- Calculation history
-- Dark mode theme with sleek gradient UI
+- basic arithmetic
+- square, square root, reciprocal, percentage, and +/-
+- calculation history saved in local storage
+- keyboard support
+- one-click result copying
+- responsive layout for smaller screens
+- visible keyboard focus states and improved history controls
 
-**Design Highlights**
-- Beautiful gradient UI with smooth animations
-- Works across phones, tablets, and desktops
-- Glowing effects and hover animations
-- Keyboard support for power users
-- Responsive button feedback and visual cues
+## Run it
 
-**Easter Egg**
-- Try typing `556677567` to unlock a (meh) surprise!
+No build step and no dependencies.
 
-## How to Use
+1. Clone or download the repo.
+2. Open `index.html` in a browser.
+3. Start calculating.
 
-1. Open `index.html` in your browser
-2. Click buttons to calculate (or use your keyboard!)
-3. Hit `=` to get your answer
-4. Use `←` to undo a digit, `C` to start over
-5. Use advanced functions like `√`, `x²`, and `1/x`
-6. Click the history button to see past calculations
-7. Optional: Find the secret code
+Keyboard shortcuts:
 
-## What's Inside
+- `0-9` and `.` — enter numbers
+- `+ - * /` — operators
+- `Enter` or `=` — calculate
+- `Backspace` — remove the last digit
+- `Escape` — close history, or clear when history is closed
 
-```
-├── index.html    → The structure
-├── styles.css    → The beauty (gradients, animations, glow effects)
-└── app.js        → The brains (calculator logic, secret code, history)
+## Files
+
+```text
+index.html   page structure
+styles.css   layout, colours, responsive styles
+app.js       calculator logic, history, keyboard controls
 ```
 
-## Tech Stack
+## Tiny secret
 
-- Built with -  vanilla JavaScript, HTML, and CSS
-- Event Delegation - Efficient button handling
-- Mobile-First - Works everywhere
-- Local Storage - Persistent calculation history
+There is still an easter egg hidden in the number input. I'm leaving the code in the repo, so it is not exactly Fort Knox.
 
-## Browser Support
+## Things I might add later
 
-Works on everything modern:
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile browsers (iOS, Android)
+- memory buttons
+- a cleaner expression display
+- proper automated tests
+- theme options
 
----
-
-Made with attention to detail and a bit of fun
+Built with plain HTML, CSS, and JavaScript because this project really does not need a framework.
