@@ -11,10 +11,15 @@
         <div class="calculator">
             <div class="header">
                 <h1>Calculator</h1>
-                <button class="history-btn" id="historyBtn" title="View calculation history">History</button>
+                <div class="header-actions">
+                    <button class="copy-btn" id="copyBtn" type="button" title="Copy current result" aria-label="Copy current result">Copy</button>
+                    <button class="history-btn" id="historyBtn" type="button" title="View calculation history" aria-haspopup="dialog" aria-controls="historyModal">History</button>
+                </div>
             </div>
             <div class="display">
-                <input type="text" id="result" readonly placeholder="0">
+                <label class="sr-only" for="result">Calculator display</label>
+                <input type="text" id="result" readonly placeholder="0" aria-live="polite">
+                <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
             </div>
             <div class="buttons">
                 <!-- Row 1: Advanced functions -->
@@ -57,16 +62,16 @@
     </div>
 
     <!-- History Modal -->
-    <div class="modal" id="historyModal">
+    <div class="modal" id="historyModal" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Calculation History</h2>
-                <button class="close-btn" id="closeBtn">&times;</button>
+                <h2 id="historyTitle">Calculation History</h2>
+                <button class="close-btn" id="closeBtn" type="button" aria-label="Close calculation history">&times;</button>
             </div>
             <div class="history-list" id="historyList">
                 <p class="empty-state">No history yet</p>
             </div>
-            <button class="clear-history-btn" id="clearHistoryBtn">Clear History</button>
+            <button class="clear-history-btn" id="clearHistoryBtn" type="button">Clear History</button>
         </div>
     </div>
 
